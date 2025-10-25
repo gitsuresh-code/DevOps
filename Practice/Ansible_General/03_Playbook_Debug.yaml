@@ -1,0 +1,7 @@
+- name: Debug Module Practice
+  hosts: local
+  connection: local
+  tasks:
+  - name: Printing the statements
+    ansible.builtin.debug:
+      msg: "This is test message"

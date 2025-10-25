@@ -1,0 +1,8 @@
+- name: Variable Practice
+  hosts: local
+  connection: local
+  tasks:
+  - name: Inventory Variables
+    ansible.builtin.debug:
+      msg: "{{ ename }} is {{ designation }} with {{ exp }} experience"
+    

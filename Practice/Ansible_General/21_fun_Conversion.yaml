@@ -1,0 +1,10 @@
+- name: functions
+  hosts: local
+  connection: local
+  vars:
+   technologies: DevOps, linux, SQL, Ansible  #string
+  tasks:
+  - name: Convert string into list
+    ansible.builtin.debug:
+      msg: "Technologies are : {{ technologies | split(',') }}"
+  

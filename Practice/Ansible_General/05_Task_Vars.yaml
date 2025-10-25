@@ -1,0 +1,12 @@
+- name: Variables Practice
+  hosts: local
+  connection: local
+  tasks:
+  - name: calling variable from task
+    vars:
+      ename: suresh
+      exp: 11+
+      designation: DevOpsEngineer
+    ansible.builtin.debug:
+      msg: "{{ ename }} is {{ designation }} with {{ exp }}"
+    

@@ -1,0 +1,23 @@
+- name: Variables Practice
+  hosts: local
+  connection: local
+  # vars:
+  #   test: play_variable
+  # vars_prompt:
+  #   - name: test
+  #     prompt: what is your name?
+  #     private: false
+  vars_files:
+  - variable.yaml
+  tasks:
+  - name: Testing Variable Sequence
+    # vars:
+    #   test: task_variable
+    ansible.builtin.debug:
+      msg: "Printing the variable: {{ test }}"  
+
+#1 Task variables
+#2 File variables
+#3 Prompt Variables
+#4 Play Variable
+#5 Inventory Variable

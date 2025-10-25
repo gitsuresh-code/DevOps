@@ -1,0 +1,10 @@
+- name: Data Types Practice
+  hosts: local
+  connection: local
+  vars_files:
+  - 15_data_types.yaml
+  tasks:
+  - name: Calling Data types from another file
+    ansible.builtin.debug:
+      msg: "Available_course: {{ Course }} required_duration: {{ Duration }} and skill_set required: {{ skills }} and Main_concepts covered: {{ concepts }}"
+    

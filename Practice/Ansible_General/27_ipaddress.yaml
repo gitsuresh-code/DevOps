@@ -1,0 +1,9 @@
+- name: Functions
+  hosts: local
+  connection: local
+  vars:
+    ip: "192.20.0.0"
+  tasks:
+  - name: IP is valid or not
+    ansible.builtin.debug:
+      msg: "{{ ip | ansible.utils.ipv4 }}" #pip install netaddr - dependency libraries should be installed

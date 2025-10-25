@@ -1,0 +1,13 @@
+    Course: "DevOps with AWS" # string
+    Duration: 120 # number
+    is_live: true # boolean
+    # list
+    skills: # ["linux", "shell", "ansible"]
+      - python
+      - shjavaell
+      - ansible
+      
+    concepts: # dictionary or map
+      cloud: "aws"
+      cm: "ansible"
+      

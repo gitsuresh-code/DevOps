@@ -1,0 +1,11 @@
+- name: Variables Practice
+  hosts: local
+  connection: local
+  vars_prompt:
+    - name: uname
+      prompt: what is your name
+      private: yes
+  tasks:
+  - name: Calling private variables through prompt
+    ansible.builtin.debug:
+      msg: "User name is: {{ uname }}"

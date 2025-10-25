@@ -1,0 +1,19 @@
+- name: Loop Concept
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: Loop check
+    # ansible.builtin.dnf:
+    #   name: "{{ item.name }}"
+    #   state: "{{ item.state }}"
+    
+    ansible.builtin.package:
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
+    
+    loop: 
+    - { name: "nginx", state: "present" }
+    - { name: "zip", state: "present" }
+    - { name: "python3", state: "present" }
+

@@ -1,0 +1,17 @@
+- name: Conditions
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: Error Handling using WHEN functions
+    ansible.builtin.command: id roboshop
+    register: user_check
+    ignore_errors: true
+
+  - name: print the USEROUTPUT
+    ansible.builtin.debug:
+     msg: "{{ user_check }}"
+
+  - name: create user
+    ansible.builtin.command: useradd roboshop
+    when: user_check.rc != 0

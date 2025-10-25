@@ -1,0 +1,6 @@
+- name: Variables
+  vars:
+    ename: suresh
+    test: file_variable
+    exp: 11+
+    designation: DevOPS Engineer

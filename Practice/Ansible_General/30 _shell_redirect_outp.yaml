@@ -1,0 +1,12 @@
+- name: Functions
+  hosts: local
+  connection: local
+  tasks:
+  
+  - name: redirect the output using shell
+    ansible.builtin.shell: ls -ltr > /tmp/output.txt
+    register: redirect_output
+
+  - name: print redirect_output shell
+    ansible.builtin.debug:
+      msg: "{{ redirect_output }}"

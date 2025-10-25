@@ -1,0 +1,17 @@
+- name: Practice 
+  hosts: local
+  connection: local
+  # vars_prompt:
+  #  - name: number
+  #    prompt: Enter the value
+  #    private: false
+  vars:
+   number: 5
+
+  tasks:
+   - name: Practice
+     ansible.builtin.debug:
+      msg: "{{ number }} is less than 10"
+     #when: number | int < 10
+     when: number < 10
+

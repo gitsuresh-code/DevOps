@@ -1,0 +1,12 @@
+- name: Variable Practice
+  hosts: local
+  connection: local
+  vars: 
+    name: suresh
+    designation: DevOps Engineer
+    Exp: 11+
+  tasks:
+  - name: Calling Playbook variables
+    ansible.builtin.debug:
+      msg: "{{ name }} is {{ designation }} with {{ Exp }} experience"
+    

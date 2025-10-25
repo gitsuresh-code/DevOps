@@ -1,0 +1,13 @@
+- name: Debug Loop Practice
+  hosts: local
+  connection: local
+  #become: yes
+  tasks:
+    - name: Loop checking for Debug command
+      ansible.builtin.debug:
+        msg: "User Name: {{ item }}"
+      loop:
+      - Suresh
+      - Ramesh
+      - DevOps
+

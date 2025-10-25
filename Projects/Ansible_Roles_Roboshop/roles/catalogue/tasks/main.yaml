@@ -1,0 +1,37 @@
+- name: Application user Creation
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: roboshop_user.yaml
+
+- name: Node JS Setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: npm_setup.yaml
+
+
+- name: Copying the mongo repo
+  ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+
+ 
+- name: Installing Mongosh client
+  ansible.builtin.package:
+      name: mongodb-mongosh
+      state: present
+
+- name: connnect to mongodb catalogue
+  ansible.builtin.command: mongosh {{ mongo_db }} --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+  register: catalogue_output
+  
+- name: Loading the data into Mongo
+  ansible.builtin.shell: mongosh --host {{ mongo_db }} </app/db/master-data.js
+  when: catalogue_output.stdout | int < 0 
+  
+- name: Service creation and starting service
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: system.yaml
+
+
+

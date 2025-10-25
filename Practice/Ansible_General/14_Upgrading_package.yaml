@@ -1,0 +1,27 @@
+- name: Package Status
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+     - name: Upgrading packages to latest version
+       ansible.builtin.package:
+          name: "{{ item }}"
+          state: latest
+       loop:
+       - nginx
+       - python3
+
+     - name: Starting the services
+       ansible.builtin.service:
+         name: "{{ item }}"
+         state: started
+       loop:
+       - nginx
+       #- python3
+     - name: Unintalling the python3
+       ansible.builtin.service:
+         name: "{{ item }}"
+         state: abscent
+       loop:
+       #- nginx
+       - python3

@@ -1,0 +1,12 @@
+- name: functions
+  hosts: local
+  connection: local
+  tasks:
+  - name: redirect the output
+    ansible.builtin.command: ls -lrt > /tmp/output.txt
+    register: redirect_output
+    ignore_errors: true
+
+  - name: print redirect_output
+    ansible.builtin.debug:
+      msg: "{{ redirect_output }}"
