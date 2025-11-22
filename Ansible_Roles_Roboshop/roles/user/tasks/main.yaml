@@ -1,0 +1,14 @@
+- name: Creating applicaiton user
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: roboshop_user.yaml
+
+- name: NodeJS setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: npm_setup.yaml
+
+- name: Service file setup and starting service
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: system.yaml
